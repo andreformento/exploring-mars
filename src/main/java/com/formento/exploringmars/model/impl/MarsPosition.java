@@ -24,6 +24,16 @@ public class MarsPosition implements Position {
     }
 
     @Override
+    public Boolean isGreaterThanOrEqualTo(Position position) {
+        return null;
+    }
+
+    @Override
+    public Boolean isLessThanOrEqualTo(Position position) {
+        return null;
+    }
+
+    @Override
     public int compareTo(Position that) {
         final int result = this.getX().compareTo(that.getX());
         if (result == 0) {
