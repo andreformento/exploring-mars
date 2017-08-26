@@ -34,7 +34,7 @@ public class MarsPosition implements Position {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public final boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -47,7 +47,7 @@ public class MarsPosition implements Position {
     }
 
     @Override
-    public int hashCode() {
+    public final int hashCode() {
         return Objects.hash(x, y);
     }
 
