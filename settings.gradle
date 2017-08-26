@@ -1,4 +1,1 @@
 rootProject.name = 'exploring-mars'
-
-include 'explorer-manager'
-include 'explorer-api'

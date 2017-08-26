@@ -1,13 +1,13 @@
-package com.formento.exploringmars.explorermanager;
+package com.formento.exploringmars;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ExplorerManagerApplication {
+public class ExploringMarsApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ExplorerManagerApplication.class, args);
+        SpringApplication.run(ExploringMarsApplication.class, args);
     }
 
 }

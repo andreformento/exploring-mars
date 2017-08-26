@@ -1,4 +1,4 @@
-package com.formento.exploringmars.explorerapi;
+package com.formento.exploringmars;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ExplorerApiApplicationTests {
+public class ExploringMarsApplicationTests {
 
     @Test
     public void contextLoads() {
