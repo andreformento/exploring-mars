@@ -88,4 +88,14 @@ public class MarsPositionTest {
         assertThat(marsPosition.isLessThanOrEqualTo(new MarsPosition(0, 1))).isFalse();
     }
 
+    @Test
+    public void shouldComparePosition() {
+        assertThat(marsPosition.compareTo(new MarsPosition(1, 2))).isEqualTo(0);
+
+        assertThat(marsPosition.compareTo(new MarsPosition(4, 2))).isEqualTo(-1);
+        assertThat(marsPosition.compareTo(new MarsPosition(1, 3))).isEqualTo(-1);
+
+        assertThat(marsPosition.compareTo(new MarsPosition(1, 0))).isEqualTo(1);
+        assertThat(marsPosition.compareTo(new MarsPosition(0, 2))).isEqualTo(1);
+    }
 }
