@@ -2,8 +2,8 @@ package com.formento.exploringmars.model;
 
 public interface Planet {
 
-    void landing(final GroundProbe groundProbe, final Position position);
+    void landing(Position position, GroundProbe groundProbe);
 
-    void changePosition(final Position currentPosition, final Position newPosition);
+    void changePosition(Position currentPosition, Position newPosition);
 
 }

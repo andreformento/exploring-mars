@@ -1,9 +1,11 @@
 package com.formento.exploringmars.model.impl;
 
-import static org.mockito.Matchers.contains;
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.startsWith;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.only;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import com.formento.exploringmars.infra.BusinessException;
@@ -35,29 +37,58 @@ public class MarsPlanetTest {
         final Position position = mock(Position.class);
         final GroundProbe groundProbe = mock(GroundProbe.class);
 
-        planet.landing(groundProbe, position);
+        planet.landing(position, groundProbe);
 
         verify(planetArea, only()).validateBoundary(position);
     }
 
     @Test
-    public void shouldChangePositionOfGroundProbe() {
-        final Position currentPosition = mock(Position.class);
-        final Position newPosition = mock(Position.class);
+    public void shouldLandingNewGroundProbeinDifferentPlace() {
+        final Position position = new MarsPosition(1, 2);
+        final GroundProbe groundProbe = mock(GroundProbe.class);
+        final Position position2 = new MarsPosition(3, 4);
+        final GroundProbe groundProbe2 = mock(GroundProbe.class);
 
+        planet.landing(position, groundProbe);
+        planet.landing(position2, groundProbe2);
+
+        verify(planetArea, times(2)).validateBoundary(any(Position.class));
+    }
+
+    @Test
+    public void shouldLandingNewGroundProbeAfterPositionBeFree() {
+        final Position position = new MarsPosition(1, 2);
+        final GroundProbe groundProbe = mock(GroundProbe.class);
+        final Position position2 = new MarsPosition(3, 4);
+        final GroundProbe groundProbe2 = mock(GroundProbe.class);
+
+        planet.landing(position, groundProbe);
+        planet.changePosition(position, position2);
+        planet.landing(position, groundProbe2);
+
+        verify(planetArea, times(3)).validateBoundary(any(Position.class));
+    }
+
+    @Test
+    public void shouldChangePositionOfGroundProbe() {
+        final Position currentPosition = new MarsPosition(0, 2);
+        final Position newPosition = new MarsPosition(1, 2);
+        final GroundProbe groundProbe = mock(GroundProbe.class);
+
+        planet.landing(currentPosition, groundProbe);
         planet.changePosition(currentPosition, newPosition);
 
-        verify(planetArea, only()).validateBoundary(newPosition);
+        verify(planetArea, times(2)).validateBoundary(any(Position.class));
     }
 
     @Test
     public void shouldNotChangePositionOfGroundProbeWhenValidateBoundaryFail() {
         final Position currentPosition = mock(Position.class);
-        final Position newPosition = mock(Position.class);
+        final Position newPosition = new MarsPosition(9, 10);
 
         expectedException.expect(BusinessException.class);
         final String messageException = "The position is out of the security area";
-        expectedException.expectMessage(contains(messageException));
+        expectedException.expectMessage(messageException);
 
         doThrow(new BusinessException(messageException)).
             when(planetArea).
@@ -67,19 +98,29 @@ public class MarsPlanetTest {
     }
 
     @Test
-    public void shouldNotPutAGroundProbeWhereIsBusy() {
+    public void shouldNotPutAGroundProbeWhereDestinationIsBusy() {
         final GroundProbe groundProbe = mock(GroundProbe.class);
-        final Position newPosition = mock(Position.class);
+        final Position position = new MarsPosition(9, 10);
+        final Position duplicatedPosition = new MarsPosition(9, 10);
 
         expectedException.expect(BusinessException.class);
-        final String messageException = "The new position is busy";
-        expectedException.expectMessage(contains(messageException));
+        expectedException.expectMessage("The position (9, 10) is busy");
 
-        doThrow(new BusinessException(messageException)).
-            when(planetArea).
-            validateBoundary(newPosition);
+        planet.landing(position, groundProbe);
+        planet.landing(duplicatedPosition, groundProbe);
 
-        planet.landing(groundProbe, newPosition);
+        verify(planetArea, only()).validateBoundary(position);
+    }
+
+    @Test
+    public void shouldNotChangeGroundProbeWhereOriginIsEmpty() {
+        final Position emptyPosition = new MarsPosition(8, 10);
+        final Position newPosition = new MarsPosition(9, 10);
+
+        expectedException.expect(BusinessException.class);
+        expectedException.expectMessage("The position (8, 10) is empty");
+
+        planet.changePosition(emptyPosition, newPosition );
     }
 
 }
