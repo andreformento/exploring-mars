@@ -6,6 +6,7 @@ import nl.jqno.equalsverifier.EqualsVerifier;
 import org.junit.Before;
 import org.junit.Test;
 
+// implement mutant test -> http://pitest.org
 public class MarsPositionTest {
 
     private MarsPosition marsPosition;
@@ -21,15 +22,15 @@ public class MarsPositionTest {
     }
 
     @Test
-    public void shouldBeGreaterWithXAndY() {
-        assertThat(marsPosition.isGreaterThanOrEqualTo(new MarsPosition(0, 0))).isTrue();
-    }
-
-    @Test
     public void shouldBeEqualWithXAndY() {
         final MarsPosition position = new MarsPosition(1, 2);
         assertThat(marsPosition.isGreaterThanOrEqualTo(position)).isTrue();
         assertThat(marsPosition.isLessThanOrEqualTo(position)).isTrue();
+    }
+
+    @Test
+    public void shouldBeGreaterWithXAndY() {
+        assertThat(marsPosition.isGreaterThanOrEqualTo(new MarsPosition(0, 0))).isTrue();
     }
 
     @Test
@@ -64,12 +65,12 @@ public class MarsPositionTest {
 
     @Test
     public void shouldBeLessWithX() {
-        assertThat(marsPosition.isLessThanOrEqualTo(new MarsPosition(2, 0))).isTrue();
+        assertThat(marsPosition.isLessThanOrEqualTo(new MarsPosition(2, 2))).isTrue();
     }
 
     @Test
     public void shouldBeLessWithY() {
-        assertThat(marsPosition.isLessThanOrEqualTo(new MarsPosition(0, 3))).isTrue();
+        assertThat(marsPosition.isLessThanOrEqualTo(new MarsPosition(1, 3))).isTrue();
     }
 
     @Test
