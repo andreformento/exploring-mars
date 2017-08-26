@@ -16,10 +16,10 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
-public class SimpleGroundProbeTest {
+public class ExplorerGroundProbeTest {
 
     @InjectMocks
-    private SimpleGroundProbe simpleGroundProbe;
+    private ExplorerGroundProbe explorerGroundProbe;
 
     @Mock
     private Planet planet;
@@ -33,7 +33,7 @@ public class SimpleGroundProbeTest {
         final Position newPosition = mock(Position.class);
 
         when(navigationSense.goForward(position)).thenReturn(newPosition);
-        final Position result = simpleGroundProbe.goForward();
+        final Position result = explorerGroundProbe.goForward();
 
         assertThat(result).isEqualTo(newPosition);
         verify(planet, only()).changePosition(position, newPosition);
@@ -44,7 +44,7 @@ public class SimpleGroundProbeTest {
         final NavigationSense newNavigationSense = mock(NavigationSense.class);
 
         when(navigationSense.turnLeft()).thenReturn(newNavigationSense);
-        final NavigationSense result = simpleGroundProbe.turnLeft();
+        final NavigationSense result = explorerGroundProbe.turnLeft();
 
         assertThat(result).isEqualTo(newNavigationSense);
     }
@@ -54,7 +54,7 @@ public class SimpleGroundProbeTest {
         final NavigationSense newNavigationSense = mock(NavigationSense.class);
 
         when(navigationSense.turnRight()).thenReturn(newNavigationSense);
-        final NavigationSense result = simpleGroundProbe.turnRight();
+        final NavigationSense result = explorerGroundProbe.turnRight();
 
         assertThat(result).isEqualTo(newNavigationSense);
     }

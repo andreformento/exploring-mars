@@ -5,13 +5,13 @@ import com.formento.exploringmars.model.NavigationSense;
 import com.formento.exploringmars.model.Planet;
 import com.formento.exploringmars.model.Position;
 
-public class SimpleGroundProbe implements GroundProbe {
+public class ExplorerGroundProbe implements GroundProbe {
 
     private final Planet planet;
     private Position position;
     private NavigationSense navigationSense;
 
-    public SimpleGroundProbe(Planet planet, Position position, NavigationSense navigationSense) {
+    public ExplorerGroundProbe(Planet planet, Position position, NavigationSense navigationSense) {
         this.planet = planet;
         this.position = position;
         this.navigationSense = navigationSense;
