@@ -1,8 +1,8 @@
 package com.formento.exploringmars.model;
 
-public interface GroundProbe {
+public interface NavigationSense {
 
-    Position goForward();
+    Position goForward(Position currentPosition);
 
     NavigationSense turnLeft();
 
