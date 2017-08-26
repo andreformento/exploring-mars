@@ -1,11 +1,9 @@
 package com.formento.exploringmars.model;
 
-import java.util.UUID;
-
 public interface SpacialStation {
 
-    void sendGroundProbeToThePlanet(final GroundProbe groundProbe);
+    GroundProbe deployGroundProbeOnPlanet(Position position, NavigationSense navigationSense);
 
-    void moveTo(final DriveCommand driveCommand, final UUID id);
+    void move(DriveCommand driveCommand, GroundProbe groundProbe);
 
 }

@@ -15,6 +15,8 @@ public class ExplorerGroundProbe implements GroundProbe {
         this.planet = planet;
         this.position = position;
         this.navigationSense = navigationSense;
+
+        this.planet.landing(position, this);
     }
 
     @Override

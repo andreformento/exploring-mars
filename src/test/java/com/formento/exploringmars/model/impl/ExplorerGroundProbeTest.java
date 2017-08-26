@@ -1,6 +1,7 @@
 package com.formento.exploringmars.model.impl;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.atMost;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.only;
 import static org.mockito.Mockito.verify;
@@ -36,7 +37,16 @@ public class ExplorerGroundProbeTest {
         final Position result = explorerGroundProbe.goForward();
 
         assertThat(result).isEqualTo(newPosition);
-        verify(planet, only()).changePosition(position, newPosition);
+        verify(planet, atMost(1)).changePosition(position, newPosition);
+    }
+
+    @Test
+    public void shouldLandingOnPlanet() {
+        final Planet planet = mock(Planet.class);
+        final Position position = mock(Position.class);
+        final ExplorerGroundProbe explorerGroundProbe = new ExplorerGroundProbe(planet, position, mock(NavigationSense.class));
+
+        verify(planet, only()).landing(position, explorerGroundProbe);
     }
 
     @Test
