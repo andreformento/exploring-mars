@@ -2,16 +2,15 @@ package com.formento.exploringmars.model.impl;
 
 import com.formento.exploringmars.model.GroundProbe;
 import com.formento.exploringmars.model.Planet;
+import com.formento.exploringmars.model.PlanetArea;
 import com.formento.exploringmars.model.Position;
 
 public class MarsPlanet implements Planet {
 
-    private final Position leftBottom;
-    private final Position rightTop;
+    private final PlanetArea planetArea;
 
-    public MarsPlanet(Position leftBottom, Position rightTop) {
-        this.leftBottom = leftBottom;
-        this.rightTop = rightTop;
+    public MarsPlanet(final PlanetArea planetArea) {
+        this.planetArea = planetArea;
     }
 
     @Override
@@ -24,4 +23,12 @@ public class MarsPlanet implements Planet {
 
     }
 
+    private void boundaryValidation(Position position) {
+    }
+
+    private void removeFrom(Position currentPosition) {
+    }
+
+    private void putOn(Position eq, GroundProbe any) {
+    }
 }
