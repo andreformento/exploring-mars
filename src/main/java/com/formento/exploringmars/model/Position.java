@@ -6,7 +6,6 @@ public interface Position extends Comparable<Position> {
 
     Integer getY();
 
-
     Boolean isGreaterThanOrEqualTo(Position position);
 
     Boolean isLessThanOrEqualTo(Position position);
