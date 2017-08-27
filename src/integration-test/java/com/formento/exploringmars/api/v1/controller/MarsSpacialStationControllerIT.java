@@ -54,6 +54,38 @@ public class MarsSpacialStationControllerIT {
     }
 
     @Test
+    public void shouldNavigateOnMarsWithMultiMoviments() {
+        bdd.
+            givenBody("{\n"
+                + "    \"x\": 1,\n"
+                + "    \"y\": 2,\n"
+                + "    \"navigationSense\": \"N\",\n"
+                + "    \"driveCommands\": [\"L\",\"M\",\"L\",\"M\",\"L\",\"M\",\"L\",\"M\",\"M\"]\n"
+                + "}").
+            whenExplorePlanet().
+            thenResultOK().
+            thenHaveAFinalDirection(1, 3, "N");
+
+        bdd.
+            givenBody("{\n"
+                + "    \"x\": 3,\n"
+                + "    \"y\": 3,\n"
+                + "    \"navigationSense\": \"E\",\n"
+                + "    \"driveCommands\": [\"M\",\"M\",\"R\",\"M\",\"M\",\"R\",\"M\",\"R\",\"R\",\"M\"]\n"
+                + "}").
+            whenExplorePlanet().
+            thenResultOK().
+            thenHaveAFinalDirection(5, 1, "E");
+
+        bdd.
+            given().
+            whenDoGet().
+            thenHasSize(2).
+            thenHasItem(1, 3, "N").
+            thenHasItem(5, 1, "E");
+    }
+
+    @Test
     public void shouldNotNavigateInTheSamePosition() {
         shouldNavigateOnMars();
 
