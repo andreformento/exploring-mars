@@ -1,0 +1,4 @@
+planetArea:
+  limit:
+    x: 5
+    y: 6
