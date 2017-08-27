@@ -1,10 +1,12 @@
 package com.formento.exploringmars.model.impl;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.formento.exploringmars.model.NavigationSense;
 import com.formento.exploringmars.model.Position;
 import java.util.function.Function;
 
 public enum WindRose implements NavigationSense {
+    @JsonProperty("N")
     NORTH(
         currentPosition -> new MarsPosition(currentPosition.getX(), currentPosition.getY() + 1)) {
         public NavigationSense turnLeft() {
@@ -16,6 +18,7 @@ public enum WindRose implements NavigationSense {
         }
     },
 
+    @JsonProperty("E")
     EAST(
         currentPosition -> new MarsPosition(currentPosition.getX() + 1, currentPosition.getY())) {
         public NavigationSense turnLeft() {
@@ -27,6 +30,7 @@ public enum WindRose implements NavigationSense {
         }
     },
 
+    @JsonProperty("S")
     SOUTH(
         currentPosition -> new MarsPosition(currentPosition.getX(), currentPosition.getY() - 1)) {
         public NavigationSense turnLeft() {
@@ -37,6 +41,8 @@ public enum WindRose implements NavigationSense {
             return WEST;
         }
     },
+
+    @JsonProperty("W")
     WEST(
         currentPosition -> new MarsPosition(currentPosition.getX() - 1, currentPosition.getY())) {
         public NavigationSense turnLeft() {
