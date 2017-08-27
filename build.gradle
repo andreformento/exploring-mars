@@ -50,3 +50,12 @@ task codeCoverageReport(type: JacocoReport) {
         csv.enabled false
     }
 }
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled true
+    }
+}
+
+check.dependsOn jacocoTestReport
