@@ -1,6 +1,7 @@
 package com.formento.exploringmars.model.impl;
 
 import com.formento.exploringmars.model.Position;
+import java.beans.ConstructorProperties;
 import java.util.Objects;
 
 public class MarsPosition implements Position {
@@ -9,6 +10,7 @@ public class MarsPosition implements Position {
     private final Integer x;
     private final Integer y;
 
+    @ConstructorProperties({"x", "y"})
     public MarsPosition(Integer x, Integer y) {
         this.x = x;
         this.y = y;
