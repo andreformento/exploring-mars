@@ -22,7 +22,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@DirtiesContext(classMode = ClassMode.AFTER_CLASS)
+@DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
 public class MarsSpacialStationControllerIT {
 
     @Autowired
@@ -36,7 +36,7 @@ public class MarsSpacialStationControllerIT {
     }
 
     @Test
-    public void shouldNotCreatePropertyAndValidate() {
+    public void shouldNavigateOnMars() {
         final String json = "{\n"
             + "    \"x\": 1,\n"
             + "    \"y\": 2,\n"
@@ -53,6 +53,29 @@ public class MarsSpacialStationControllerIT {
             body("x", equalTo(1)).
             body("y", equalTo(3)).
             body("navigationSense", equalTo("E"));
+    }
+
+    @Test
+    public void shouldNavigateOnMarsAfterAnotherGroundProbe() {
+        shouldNavigateOnMars();
+
+        final String json = "{\n"
+            + "    \"x\": 1,\n"
+            + "    \"y\": 2,\n"
+            + "    \"navigationSense\": \"W\",\n"
+            + "    \"driveCommands\": [\"M\",\"R\"]\n"
+            + "}";
+
+
+        given.
+            body(json).
+        when().
+            post("/spacial-station").
+        then().
+            statusCode(is(HttpStatus.OK.value())).
+            body("x", equalTo(0)).
+            body("y", equalTo(2)).
+            body("navigationSense", equalTo("N"));
     }
 
 }
