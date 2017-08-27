@@ -69,4 +69,9 @@ public class ExplorerGroundProbeTest {
         assertThat(result).isEqualTo(newNavigationSense);
     }
 
+    @Test
+    public void shouldGenerateCurrentDirection() {
+        assertThat(explorerGroundProbe.getCurrentDirection()).isNotNull();
+    }
+
 }

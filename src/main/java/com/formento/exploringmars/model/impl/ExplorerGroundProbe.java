@@ -1,5 +1,6 @@
 package com.formento.exploringmars.model.impl;
 
+import com.formento.exploringmars.model.Direction;
 import com.formento.exploringmars.model.GroundProbe;
 import com.formento.exploringmars.model.NavigationSense;
 import com.formento.exploringmars.model.Planet;
@@ -10,6 +11,10 @@ public class ExplorerGroundProbe implements GroundProbe {
     private final Planet planet;
     private Position position;
     private NavigationSense navigationSense;
+
+    public ExplorerGroundProbe(Planet planet, Direction direction) {
+        this(planet, direction.getPosition(), direction.getNavigationSense());
+    }
 
     public ExplorerGroundProbe(Planet planet, Position position, NavigationSense navigationSense) {
         this.planet = planet;
@@ -37,6 +42,11 @@ public class ExplorerGroundProbe implements GroundProbe {
     public NavigationSense turnRight() {
         this.navigationSense = navigationSense.turnRight();
         return this.navigationSense;
+    }
+
+    @Override
+    public Direction getCurrentDirection() {
+        return new MarsDirection(position, navigationSense);
     }
 
 }

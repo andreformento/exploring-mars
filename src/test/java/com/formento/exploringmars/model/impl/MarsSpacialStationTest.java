@@ -4,10 +4,9 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
+import com.formento.exploringmars.model.Direction;
 import com.formento.exploringmars.model.DriveCommand;
 import com.formento.exploringmars.model.GroundProbe;
-import com.formento.exploringmars.model.NavigationSense;
-import com.formento.exploringmars.model.Position;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -25,7 +24,7 @@ public class MarsSpacialStationTest {
 
     @Test
     public void shouldDeployGroundProbeOnMars() {
-        assertThat(marsSpacialStation.deployGroundProbeOnPlanet(mock(Position.class), mock(NavigationSense.class))).
+        assertThat(marsSpacialStation.deployGroundProbeOnPlanet(mock(Direction.class))).
             isNotNull();
     }
 

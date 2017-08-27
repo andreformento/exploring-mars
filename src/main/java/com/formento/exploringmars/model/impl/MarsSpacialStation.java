@@ -1,5 +1,6 @@
 package com.formento.exploringmars.model.impl;
 
+import com.formento.exploringmars.model.Direction;
 import com.formento.exploringmars.model.DriveCommand;
 import com.formento.exploringmars.model.GroundProbe;
 import com.formento.exploringmars.model.NavigationSense;
@@ -16,8 +17,8 @@ public class MarsSpacialStation implements SpacialStation {
     }
 
     @Override
-    public GroundProbe deployGroundProbeOnPlanet(Position position, NavigationSense navigationSense) {
-        return new ExplorerGroundProbe(planet, position, navigationSense);
+    public GroundProbe deployGroundProbeOnPlanet(Direction direction) {
+        return new ExplorerGroundProbe(planet, direction);
     }
 
     @Override

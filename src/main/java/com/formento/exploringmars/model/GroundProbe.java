@@ -8,4 +8,6 @@ public interface GroundProbe {
 
     NavigationSense turnRight();
 
+    Direction getCurrentDirection();
+
 }
