@@ -27,7 +27,8 @@ public class MarsSpacialStationControllerIT {
     private void simpleNavigationOnMars() {
         bdd.
             givenSimpleBody().
-            whenDoPost().
+            whenExplorePlanet().
+            thenResultOK().
             thenHaveAFinalDirection();
     }
 
@@ -47,7 +48,8 @@ public class MarsSpacialStationControllerIT {
                 + "    \"navigationSense\": \"W\",\n"
                 + "    \"driveCommands\": [\"M\",\"R\"]\n"
                 + "}").
-            whenDoPost().
+            whenExplorePlanet().
+            thenResultOK().
             thenHaveAFinalDirection(0, 2, "N");
     }
 
@@ -57,7 +59,7 @@ public class MarsSpacialStationControllerIT {
 
         bdd.
             givenSimpleBody().
-            whenDoPost().
+            whenExplorePlanet().
             thenBadRequestWith("The position (1, 3) is busy");
     }
 
@@ -71,6 +73,19 @@ public class MarsSpacialStationControllerIT {
             thenHasSize(2).
             thenHasItem(1, 3, "E").
             thenHasItem(0, 2, "N");
+    }
+
+    @Test
+    public void shouldDeployGroundProbeOnPlanet() {
+        bdd.
+            givenBody("{\n"
+                + "    \"x\": 3,\n"
+                + "    \"y\": 4,\n"
+                + "    \"navigationSense\": \"S\"\n"
+                + "}").
+            whenDeployGroundProbeOnPlanet().
+            thenResultCreated().
+            thenHaveAFinalDirection(3, 4, "S");
     }
 
 }

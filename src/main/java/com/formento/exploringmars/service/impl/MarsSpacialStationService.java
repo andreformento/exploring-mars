@@ -34,4 +34,11 @@ public class MarsSpacialStationService implements SpacialStationService {
             map(GroundProbe::getCurrentDirection).
             collect(Collectors.toList());
     }
+
+    @Override
+    public Direction deployGroundProbeOnPlanet(Direction direction) {
+        return spacialStation.
+            deployGroundProbeOnPlanet(direction).
+            getCurrentDirection();
+    }
 }

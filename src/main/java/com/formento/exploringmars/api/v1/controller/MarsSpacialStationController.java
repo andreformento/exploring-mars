@@ -2,6 +2,7 @@ package com.formento.exploringmars.api.v1.controller;
 
 import com.formento.exploringmars.api.v1.mapper.Journey;
 import com.formento.exploringmars.model.Direction;
+import com.formento.exploringmars.model.impl.MarsDirection;
 import com.formento.exploringmars.service.SpacialStationService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,12 @@ public class MarsSpacialStationController {
     @ResponseStatus(HttpStatus.OK)
     public List<Direction> getGroundProbes() {
         return spacialStationService.getGroundProbes();
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Direction deployGroundProbeOnPlanet(@RequestBody final MarsDirection direction) {
+        return spacialStationService.deployGroundProbeOnPlanet(direction);
     }
 
     @PostMapping("/explore-planet")

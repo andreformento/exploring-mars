@@ -55,7 +55,11 @@ class MarsSpacialStationControllerBDD {
             return new Then(when.get(PATH).then());
         }
 
-        Then whenDoPost() {
+        Then whenDeployGroundProbeOnPlanet() {
+            return new Then(when.post(PATH).then());
+        }
+
+        Then whenExplorePlanet() {
             return new Then(when.post(PATH + "/explore-planet").then());
         }
     }
@@ -68,13 +72,17 @@ class MarsSpacialStationControllerBDD {
             this.then = then;
         }
 
-        Then thenResultSuccess() {
+        Then thenResultOK() {
             then.statusCode(is(HttpStatus.OK.value()));
             return this;
         }
 
+        Then thenResultCreated() {
+            then.statusCode(is(HttpStatus.CREATED.value()));
+            return this;
+        }
+
         void thenHaveAFinalDirection(Integer x, Integer y, String navigationSense) {
-            thenResultSuccess();
             then.
                 body("x", equalTo(x)).
                 body("y", equalTo(y)).

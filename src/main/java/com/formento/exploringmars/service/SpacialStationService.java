@@ -10,4 +10,6 @@ public interface SpacialStationService {
     Direction explorePlanet(Direction initialDirection, List<? extends DriveCommand> driveCommands);
 
     List<Direction> getGroundProbes();
+
+    Direction deployGroundProbeOnPlanet(Direction direction);
 }

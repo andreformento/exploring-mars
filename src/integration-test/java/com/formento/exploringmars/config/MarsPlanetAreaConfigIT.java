@@ -20,7 +20,7 @@ public class MarsPlanetAreaConfigIT {
         assertThat(marsPlanetAreaConfig.getLimit()).
             isNotNull().
             hasFieldOrPropertyWithValue("x", 5).
-            hasFieldOrPropertyWithValue("y", 6);
+            hasFieldOrPropertyWithValue("y", 5);
     }
 
 }
