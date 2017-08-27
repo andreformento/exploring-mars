@@ -24,6 +24,11 @@ repositories {
     mavenCentral()
 }
 
+configurations {
+    integrationTestCompile.extendsFrom testCompile
+    integrationTestRuntime.extendsFrom testRuntime
+}
+
 dependencies {
     compile('org.springframework.boot:spring-boot-starter')
     compile('com.google.guava:guava:21.0')
@@ -33,8 +38,30 @@ dependencies {
     testCompile('nl.jqno.equalsverifier:equalsverifier:2.3')
     testCompile("org.assertj:assertj-core:3.8.0")
     testCompile("findbugs:findbugs:1.0.0")
+
+    integrationTestCompile('net.javacrumbs.json-unit:json-unit-fluent:1.23.0')
+    integrationTestCompile('io.rest-assured:rest-assured:3.0.3')
+    integrationTestCompile('io.rest-assured:json-schema-validator:3.0.3')
+    integrationTestCompile('io.rest-assured:spring-mock-mvc:3.0.3')
 }
 
+sourceSets {
+    integrationTest {
+        java {
+            compileClasspath += main.output + test.output
+            runtimeClasspath += main.output + test.output
+            srcDir file('src/integration-test/java')
+        }
+        resources.srcDir file('src/integration-test/resources')
+    }
+}
+
+task integrationTest(type: Test, dependsOn: cleanTest) {
+    classpath = sourceSets.integrationTest.runtimeClasspath
+
+    // If you want just a single task to always run, you can set the outputs property inside of the task.
+    outputs.upToDateWhen { false }
+}
 
 task codeCoverageReport(type: JacocoReport) {
     executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
@@ -64,5 +91,7 @@ tasks.withType(FindBugs) {
         html.enabled = true
     }
 }
+
+integrationTest.mustRunAfter test
 
 check.dependsOn jacocoTestReport
