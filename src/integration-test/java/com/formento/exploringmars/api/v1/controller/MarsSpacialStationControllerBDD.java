@@ -36,7 +36,7 @@ class MarsSpacialStationControllerBDD {
             + "}");
     }
 
-    class When {
+    static class When {
 
         private final MockMvcRequestAsyncSender when;
 
@@ -49,7 +49,7 @@ class MarsSpacialStationControllerBDD {
         }
     }
 
-    class Then {
+    static class Then {
 
         private final ValidatableMockMvcResponse then;
 
