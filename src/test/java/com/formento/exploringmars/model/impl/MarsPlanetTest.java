@@ -119,7 +119,7 @@ public class MarsPlanetTest {
         expectedException.expect(BusinessException.class);
         expectedException.expectMessage("The position (8, 10) is empty");
 
-        planet.changePosition(emptyPosition, newPosition );
+        planet.changePosition(emptyPosition, newPosition);
     }
 
 }

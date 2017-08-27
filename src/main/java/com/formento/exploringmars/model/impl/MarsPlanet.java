@@ -39,7 +39,7 @@ public class MarsPlanet implements Planet {
     }
 
     private GroundProbe removeFrom(Position currentPosition) {
-        if (! groundProbes.containsKey(currentPosition)) {
+        if (!groundProbes.containsKey(currentPosition)) {
             throw new BusinessException("The position " + currentPosition.toString() + " is empty");
         }
         return groundProbes.remove(currentPosition);
