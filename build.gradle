@@ -45,6 +45,8 @@ dependencies {
     integrationTestCompile('io.rest-assured:spring-mock-mvc:3.0.3')
 }
 
+// how to remove warning on gradle
+// http://www.thinkcode.se/blog/2017/08/14/gradle-settestclassesdirfile-method-has-been-deprecated
 sourceSets {
     integrationTest {
         java {
@@ -57,6 +59,7 @@ sourceSets {
 }
 
 task integrationTest(type: Test, dependsOn: cleanTest) {
+    testClassesDir = sourceSets.integrationTest.output.classesDir
     classpath = sourceSets.integrationTest.runtimeClasspath
 
     // If you want just a single task to always run, you can set the outputs property inside of the task.
@@ -72,7 +75,6 @@ task codeCoverageReport(type: JacocoReport) {
 
     reports {
         xml.enabled true
-        xml.destination "${buildDir}/reports/jacoco/report.xml"
         html.enabled false
         csv.enabled false
     }
@@ -92,6 +94,6 @@ tasks.withType(FindBugs) {
     }
 }
 
-integrationTest.mustRunAfter test
-
 check.dependsOn jacocoTestReport
+check.dependsOn integrationTest
+integrationTest.mustRunAfter test
