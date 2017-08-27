@@ -20,7 +20,7 @@ public class MarsSpacialStationService implements SpacialStationService {
     }
 
     @Override
-    public Direction explorePlanet(Direction initialDirection, List<DriveCommand> driveCommands) {
+    public Direction explorePlanet(Direction initialDirection, List<? extends DriveCommand> driveCommands) {
         final GroundProbe groundProbe = spacialStation.deployGroundProbeOnPlanet(initialDirection);
         driveCommands.forEach(g -> g.move(groundProbe));
         return groundProbe.getCurrentDirection();

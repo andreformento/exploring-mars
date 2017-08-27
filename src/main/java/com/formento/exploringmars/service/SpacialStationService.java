@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface SpacialStationService {
 
-    Direction explorePlanet(Direction initialDirection, List<DriveCommand> driveCommands);
+    Direction explorePlanet(Direction initialDirection, List<? extends DriveCommand> driveCommands);
 
 }
