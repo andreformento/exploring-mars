@@ -1,5 +1,6 @@
 package com.formento.exploringmars.config;
 
+import java.io.Serializable;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +18,7 @@ public class MarsPlanetAreaConfig {
         this.limit = limit;
     }
 
-    public static class Limit {
+    public static class Limit implements Serializable {
 
         private Integer x;
         private Integer y;
