@@ -23,8 +23,8 @@ public class MarsSpacialStationController {
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public Direction create(@RequestBody final Journey journey) {
+    @ResponseStatus(HttpStatus.OK)
+    public Direction explorePlanet(@RequestBody final Journey journey) {
         return marsSpacialStationService.explorePlanet(journey.getDirection(), journey.getDriveCommands());
     }
 
