@@ -1,6 +1,8 @@
 package com.formento.exploringmars.model;
 
-public interface Direction {
+import java.io.Serializable;
+
+public interface Direction extends Serializable {
 
     Position getPosition();
 

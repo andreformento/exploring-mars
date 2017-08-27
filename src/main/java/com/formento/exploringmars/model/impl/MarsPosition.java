@@ -5,6 +5,7 @@ import java.util.Objects;
 
 public class MarsPosition implements Position {
 
+    private static final long serialVersionUID = 8482059431419557367L;
     private final Integer x;
     private final Integer y;
 

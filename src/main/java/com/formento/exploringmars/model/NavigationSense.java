@@ -1,6 +1,8 @@
 package com.formento.exploringmars.model;
 
-public interface NavigationSense {
+import java.io.Serializable;
+
+public interface NavigationSense extends Serializable {
 
     Position goForward(Position currentPosition);
 

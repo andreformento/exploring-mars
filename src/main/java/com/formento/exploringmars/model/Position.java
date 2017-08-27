@@ -1,6 +1,8 @@
 package com.formento.exploringmars.model;
 
-public interface Position extends Comparable<Position> {
+import java.io.Serializable;
+
+public interface Position extends Comparable<Position>, Serializable {
 
     Integer getX();
 
