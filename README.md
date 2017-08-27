@@ -1,4 +1,4 @@
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b205e4b7bc0f440db0b53dbddd563dba)](https://www.codacy.com/app/andreformento/exploring-mars?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=andreformento/exploring-mars&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b205e4b7bc0f440db0b53dbddd563dba)](https://www.codacy.com/app/andreformento/exploring-mars?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=andreformento/exploring-mars&amp;utm_campaign=Badge_Grade) [![Codacy Badge](https://api.codacy.com/project/badge/Coverage/b205e4b7bc0f440db0b53dbddd563dba)](https://www.codacy.com/app/andreformento/exploring-mars?utm_source=github.com&utm_medium=referral&utm_content=andreformento/exploring-mars&utm_campaign=Badge_Coverage)
 
 # exploring-mars
 
