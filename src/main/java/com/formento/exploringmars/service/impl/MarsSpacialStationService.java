@@ -6,6 +6,7 @@ import com.formento.exploringmars.model.GroundProbe;
 import com.formento.exploringmars.model.SpacialStation;
 import com.formento.exploringmars.service.SpacialStationService;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,5 +25,13 @@ public class MarsSpacialStationService implements SpacialStationService {
         final GroundProbe groundProbe = spacialStation.deployGroundProbeOnPlanet(initialDirection);
         driveCommands.forEach(g -> g.move(groundProbe));
         return groundProbe.getCurrentDirection();
+    }
+
+    public List<Direction> getGroundProbes() {
+        return spacialStation.
+            getGroundProbes().
+            stream().
+            map(GroundProbe::getCurrentDirection).
+            collect(Collectors.toList());
     }
 }

@@ -5,6 +5,7 @@ import com.formento.exploringmars.model.DriveCommand;
 import com.formento.exploringmars.model.GroundProbe;
 import com.formento.exploringmars.model.Planet;
 import com.formento.exploringmars.model.SpacialStation;
+import java.util.List;
 
 public class MarsSpacialStation implements SpacialStation {
 
@@ -22,6 +23,11 @@ public class MarsSpacialStation implements SpacialStation {
     @Override
     public void move(DriveCommand driveCommand, GroundProbe groundProbe) {
         driveCommand.move(groundProbe);
+    }
+
+    @Override
+    public List<GroundProbe> getGroundProbes() {
+        return planet.getGroundProbes();
     }
 
 }

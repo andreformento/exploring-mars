@@ -27,8 +27,8 @@ public class MarsSpacialStationControllerIT {
     private void simpleNavigationOnMars() {
         bdd.
             givenSimpleBody().
-            whenCall().
-            thenSuccessSimpleBody();
+            whenDoPost().
+            thenHaveAFinalDirection();
     }
 
     @Test
@@ -47,18 +47,30 @@ public class MarsSpacialStationControllerIT {
                 + "    \"navigationSense\": \"W\",\n"
                 + "    \"driveCommands\": [\"M\",\"R\"]\n"
                 + "}").
-            whenCall().
-            thenSuccessWith(0, 2, "N");
+            whenDoPost().
+            thenHaveAFinalDirection(0, 2, "N");
     }
 
     @Test
-    public void shouldNavigateInTheSamePosition() {
+    public void shouldNotNavigateInTheSamePosition() {
         shouldNavigateOnMars();
 
         bdd.
             givenSimpleBody().
-            whenCall().
-            thenBadRequestWith( "The position (1, 3) is busy");
+            whenDoPost().
+            thenBadRequestWith("The position (1, 3) is busy");
+    }
+
+    @Test
+    public void shouldReportGroundProbe() {
+        shouldNavigateOnMarsAfterAnotherGroundProbe();
+
+        bdd.
+            given().
+            whenDoGet().
+            thenHasSize(2).
+            thenHasItem(1, 3, "E").
+            thenHasItem(0, 2, "N");
     }
 
 }

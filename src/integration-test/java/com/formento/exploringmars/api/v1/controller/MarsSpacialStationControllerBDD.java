@@ -1,6 +1,7 @@
 package com.formento.exploringmars.api.v1.controller;
 
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
@@ -16,11 +17,17 @@ import org.springframework.web.context.WebApplicationContext;
 
 class MarsSpacialStationControllerBDD {
 
+    private static final String PATH = "/spacial-station";
+
     private final MockMvcRequestSpecification given;
 
     MarsSpacialStationControllerBDD(WebApplicationContext context) {
         final MockMvc mvc = webAppContextSetup(context).build();
         this.given = RestAssuredMockMvc.given().mockMvc(mvc).contentType(MediaType.APPLICATION_JSON_VALUE).accept(ContentType.JSON);
+    }
+
+    When given() {
+        return new When(given.when());
     }
 
     When givenBody(String json) {
@@ -44,8 +51,12 @@ class MarsSpacialStationControllerBDD {
             this.when = when;
         }
 
-        Then whenCall() {
-            return new Then(when.post("/spacial-station").then());
+        Then whenDoGet() {
+            return new Then(when.get(PATH).then());
+        }
+
+        Then whenDoPost() {
+            return new Then(when.post(PATH + "/explore-planet").then());
         }
     }
 
@@ -57,17 +68,35 @@ class MarsSpacialStationControllerBDD {
             this.then = then;
         }
 
-
-        void thenSuccessSimpleBody() {
-            thenSuccessWith(1, 3, "E");
+        Then thenResultSuccess() {
+            then.statusCode(is(HttpStatus.OK.value()));
+            return this;
         }
 
-        void thenSuccessWith(Integer x, Integer y, String navigationSense) {
+        void thenHaveAFinalDirection(Integer x, Integer y, String navigationSense) {
+            thenResultSuccess();
             then.
-                statusCode(is(HttpStatus.OK.value())).
                 body("x", equalTo(x)).
                 body("y", equalTo(y)).
                 body("navigationSense", equalTo(navigationSense));
+        }
+
+        void thenHaveAFinalDirection() {
+            thenHaveAFinalDirection(1, 3, "E");
+        }
+
+        Then thenHasItem(Integer x, Integer y, String navigationSense) {
+            then.
+                assertThat().
+                body("x", hasItem(x)).
+                body("y", hasItem(y)).
+                body("navigationSense", hasItem(navigationSense));
+            return this;
+        }
+
+        Then thenHasSize(Integer size) {
+            then.body("size()", is(size));
+            return this;
         }
 
         void thenBadRequestWith(String message) {

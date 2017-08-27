@@ -5,7 +5,9 @@ import com.formento.exploringmars.model.GroundProbe;
 import com.formento.exploringmars.model.Planet;
 import com.formento.exploringmars.model.PlanetArea;
 import com.formento.exploringmars.model.Position;
+import com.google.common.collect.ImmutableList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MarsPlanet implements Planet {
@@ -48,4 +50,10 @@ public class MarsPlanet implements Planet {
     private void putOn(Position newPosition, GroundProbe groundProbe) {
         groundProbes.put(newPosition, groundProbe);
     }
+
+    @Override
+    public List<GroundProbe> getGroundProbes() {
+        return ImmutableList.copyOf(groundProbes.values());
+    }
+
 }
