@@ -88,4 +88,14 @@ public class MarsSpacialStationControllerIT {
             thenHaveAFinalDirection(3, 4, "S");
     }
 
+    @Test
+    public void shouldExplorePlanetWithCreatedGroundProbe() {
+        simpleNavigationOnMars();
+        bdd.
+            givenBody("[\"L\",\"M\",\"M\",\"L\"]").
+            whenExplorePlanet(1, 3). // E
+            thenResultOK().
+            thenHaveAFinalDirection(1, 5, "W");
+    }
+
 }

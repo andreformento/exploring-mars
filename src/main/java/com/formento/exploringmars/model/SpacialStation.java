@@ -1,6 +1,7 @@
 package com.formento.exploringmars.model;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface SpacialStation {
 
@@ -9,4 +10,6 @@ public interface SpacialStation {
     void move(DriveCommand driveCommand, GroundProbe groundProbe);
 
     List<GroundProbe> getGroundProbes();
+
+    Optional<GroundProbe> getByPosition(Position position);
 }

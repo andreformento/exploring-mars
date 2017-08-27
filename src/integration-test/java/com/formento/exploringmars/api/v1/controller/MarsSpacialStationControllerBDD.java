@@ -62,6 +62,10 @@ class MarsSpacialStationControllerBDD {
         Then whenExplorePlanet() {
             return new Then(when.post(PATH + "/explore-planet").then());
         }
+
+        Then whenExplorePlanet(Integer x, Integer y) {
+            return new Then(when.post(PATH + "/explore-planet/" + x + "/" + y).then());
+        }
     }
 
     static class Then {

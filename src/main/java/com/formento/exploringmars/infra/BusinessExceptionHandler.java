@@ -21,4 +21,12 @@ public class BusinessExceptionHandler {
         return new ErrorResult(e.getMessage());
     }
 
+    @ExceptionHandler(NotFoundException.class)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorResult notFoundException(NotFoundException e) {
+        LOGGER.error("Not found: {}", e);
+        return new ErrorResult(e.getMessage());
+    }
+
 }

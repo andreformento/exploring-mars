@@ -4,8 +4,10 @@ import com.formento.exploringmars.model.Direction;
 import com.formento.exploringmars.model.DriveCommand;
 import com.formento.exploringmars.model.GroundProbe;
 import com.formento.exploringmars.model.Planet;
+import com.formento.exploringmars.model.Position;
 import com.formento.exploringmars.model.SpacialStation;
 import java.util.List;
+import java.util.Optional;
 
 public class MarsSpacialStation implements SpacialStation {
 
@@ -28,6 +30,11 @@ public class MarsSpacialStation implements SpacialStation {
     @Override
     public List<GroundProbe> getGroundProbes() {
         return planet.getGroundProbes();
+    }
+
+    @Override
+    public Optional<GroundProbe> getByPosition(Position position) {
+        return planet.getByPosition(position);
     }
 
 }

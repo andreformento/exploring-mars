@@ -8,6 +8,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import com.formento.exploringmars.infra.BusinessException;
+import com.formento.exploringmars.infra.NotFoundException;
 import com.formento.exploringmars.model.GroundProbe;
 import com.formento.exploringmars.model.PlanetArea;
 import com.formento.exploringmars.model.Position;
@@ -116,8 +117,8 @@ public class MarsPlanetTest {
         final Position emptyPosition = new MarsPosition(8, 10);
         final Position newPosition = new MarsPosition(9, 10);
 
-        expectedException.expect(BusinessException.class);
-        expectedException.expectMessage("The position (8, 10) is empty");
+        expectedException.expect(NotFoundException.class);
+        expectedException.expectMessage("It is not possible remove because position (8, 10) is empty");
 
         planet.changePosition(emptyPosition, newPosition);
     }

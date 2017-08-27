@@ -1,8 +1,10 @@
 package com.formento.exploringmars.service.impl;
 
+import com.formento.exploringmars.infra.NotFoundException;
 import com.formento.exploringmars.model.Direction;
 import com.formento.exploringmars.model.DriveCommand;
 import com.formento.exploringmars.model.GroundProbe;
+import com.formento.exploringmars.model.Position;
 import com.formento.exploringmars.model.SpacialStation;
 import com.formento.exploringmars.service.SpacialStationService;
 import java.util.List;
@@ -20,11 +22,15 @@ public class MarsSpacialStationService implements SpacialStationService {
         this.spacialStation = spacialStation;
     }
 
+    private Direction explorePlanet(final GroundProbe groundProbe, List<? extends DriveCommand> driveCommands) {
+        driveCommands.forEach(g -> g.move(groundProbe));
+        return groundProbe.getCurrentDirection();
+    }
+
     @Override
     public Direction explorePlanet(Direction initialDirection, List<? extends DriveCommand> driveCommands) {
         final GroundProbe groundProbe = spacialStation.deployGroundProbeOnPlanet(initialDirection);
-        driveCommands.forEach(g -> g.move(groundProbe));
-        return groundProbe.getCurrentDirection();
+        return explorePlanet(groundProbe, driveCommands);
     }
 
     public List<Direction> getGroundProbes() {
@@ -41,4 +47,13 @@ public class MarsSpacialStationService implements SpacialStationService {
             deployGroundProbeOnPlanet(direction).
             getCurrentDirection();
     }
+
+    @Override
+    public Direction explorePlanet(Position position, List<? extends DriveCommand> driveCommands) {
+        final GroundProbe groundProbe = spacialStation.
+            getByPosition(position).
+            orElseThrow(() -> new NotFoundException("Ground probe not found at position " + position.toString()));
+        return explorePlanet(groundProbe, driveCommands);
+    }
+
 }
