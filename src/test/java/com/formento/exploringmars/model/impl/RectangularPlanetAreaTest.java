@@ -1,7 +1,6 @@
 package com.formento.exploringmars.model.impl;
 
 import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.only;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -14,6 +13,7 @@ import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+import edu.umd.cs.findbugs.annotations.SuppressWarnings;
 
 @RunWith(MockitoJUnitRunner.class)
 public class RectangularPlanetAreaTest {
@@ -35,6 +35,7 @@ public class RectangularPlanetAreaTest {
     }
 
     @Test
+    @SuppressWarnings("RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT")
     public void shouldBeValidWhenIsInsideOfBoundary() {
         when(position.isGreaterThanOrEqualTo(leftBottom)).thenReturn(true);
         when(position.isLessThanOrEqualTo(rightTop)).thenReturn(true);

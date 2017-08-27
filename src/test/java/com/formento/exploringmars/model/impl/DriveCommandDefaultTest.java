@@ -12,7 +12,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class DriveCommandDefaultTest {
 
-    private DriveCommandDefault driveCommandDefault;
     @Mock
     private GroundProbe groundProbe;
 

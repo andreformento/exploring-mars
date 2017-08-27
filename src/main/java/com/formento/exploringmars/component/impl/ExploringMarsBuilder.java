@@ -18,7 +18,7 @@ public class ExploringMarsBuilder implements ExploringPlanetBuilder {
         return new PlanetAreaBuilderImpl(rightTopX, rightTopY);
     }
 
-    public class PlanetAreaBuilderImpl implements PlanetAreaBuilder {
+    public static class PlanetAreaBuilderImpl implements PlanetAreaBuilder {
 
         private final Position leftBottom;
         private final Position rightTop;
@@ -33,7 +33,7 @@ public class ExploringMarsBuilder implements ExploringPlanetBuilder {
         }
     }
 
-    public class PlanetBuilderImpl implements PlanetBuilder {
+    public static class PlanetBuilderImpl implements PlanetBuilder {
 
         private final PlanetArea planetArea;
 
@@ -46,7 +46,7 @@ public class ExploringMarsBuilder implements ExploringPlanetBuilder {
         }
     }
 
-    public class SpacialStationBuilderImpl implements SpacialStationBuilder {
+    public static class SpacialStationBuilderImpl implements SpacialStationBuilder {
 
         private final Planet planet;
 
