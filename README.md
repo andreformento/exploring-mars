@@ -6,15 +6,17 @@
 
 ### Objetivo
 
-É necessário desenvolver um sistema que consiga gerenciar sondas terrestres para explorar Marte.
+É necessário desenvolver um sistema que consiga gerenciar sondas para explorar Marte.
 
 ### Como funciona?
 
-O contexto da aplicação se dá no momento em que sondas terrestres enviadas da Terra chegam em Marte.
-Essas *sondas terrestres* podem se mover para frente e girar para os lados. Elas têm o objetivo de *explorar Marte*.
+O contexto da aplicação se dá no momento em que sondas enviadas da Terra chegam em Marte.
+
+Essas *sondas* podem se mover para frente e girar para os lados. Elas têm o objetivo de *explorar Marte*.
+
 Há uma limitação em que as sondas podem se mover dentro do planeta que é determinado por uma *área retangular*.
+
 Existe uma *estação espacial* que fica próximo de Marte para gerenciar a movimentação das sondas e garantir que elas se movimentem de forma adequada. Desta forma, os sinais enviados da Terra chegam até esta estação espacial e de lá que são enviados os *comandos* para as sondas.
 
-### TODO
+## TODO
 - completar readme
-- handler exception
