@@ -13,7 +13,6 @@ import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-import edu.umd.cs.findbugs.annotations.SuppressWarnings;
 
 @RunWith(MockitoJUnitRunner.class)
 public class RectangularPlanetAreaTest {
@@ -35,7 +34,7 @@ public class RectangularPlanetAreaTest {
     }
 
     @Test
-    @SuppressWarnings("RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT")
+    @edu.umd.cs.findbugs.annotations.SuppressWarnings("RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT")
     public void shouldBeValidWhenIsInsideOfBoundary() {
         when(position.isGreaterThanOrEqualTo(leftBottom)).thenReturn(true);
         when(position.isLessThanOrEqualTo(rightTop)).thenReturn(true);
