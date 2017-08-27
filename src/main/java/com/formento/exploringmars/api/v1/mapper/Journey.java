@@ -1,5 +1,8 @@
 package com.formento.exploringmars.api.v1.mapper;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import com.formento.exploringmars.model.impl.DriveCommandDefault;
 import com.formento.exploringmars.model.impl.MarsDirection;
 import java.beans.ConstructorProperties;
@@ -12,12 +15,15 @@ public class Journey implements Serializable {
     private final MarsDirection direction;
     private final List<DriveCommandDefault> driveCommands;
 
-    @ConstructorProperties({"direction", "driveCommands"})
-    public Journey(final MarsDirection direction, final List<DriveCommandDefault> driveCommands) {
+    @JsonCreator
+    public Journey(
+        @JsonProperty(value = "direction") @JsonUnwrapped final MarsDirection direction,
+        @JsonProperty(value = "driveCommands") final List<DriveCommandDefault> driveCommands) {
         this.direction = direction;
         this.driveCommands = driveCommands;
     }
 
+    @JsonUnwrapped
     public MarsDirection getDirection() {
         return direction;
     }
