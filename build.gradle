@@ -95,6 +95,10 @@ tasks.withType(FindBugs) {
     }
 }
 
-check.dependsOn jacocoTestReport
-check.dependsOn integrationTest
 integrationTest.mustRunAfter test
+jacocoTestReport.mustRunAfter integrationTest
+
+integrationTest.dependsOn test
+codeCoverageReport.dependsOn integrationTest
+check.dependsOn integrationTest
+check.dependsOn jacocoTestReport
