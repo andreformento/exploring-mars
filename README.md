@@ -1,4 +1,4 @@
-[![codecov](https://codecov.io/gh/andreformento/exploring-mars/branch/master/graph/badge.svg)](https://codecov.io/gh/andreformento/exploring-mars) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/b205e4b7bc0f440db0b53dbddd563dba)](https://www.codacy.com/app/andreformento/exploring-mars?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=andreformento/exploring-mars&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://travis-ci.org/andreformento/exploring-mars.svg?branch=master)](https://travis-ci.org/andreformento/exploring-mars) [![codecov](https://codecov.io/gh/andreformento/exploring-mars/branch/master/graph/badge.svg)](https://codecov.io/gh/andreformento/exploring-mars) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/b205e4b7bc0f440db0b53dbddd563dba)](https://www.codacy.com/app/andreformento/exploring-mars?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=andreformento/exploring-mars&amp;utm_campaign=Badge_Grade)
 
 # exploring-mars
 
