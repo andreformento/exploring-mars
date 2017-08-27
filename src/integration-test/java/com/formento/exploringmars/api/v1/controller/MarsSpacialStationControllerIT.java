@@ -98,4 +98,12 @@ public class MarsSpacialStationControllerIT {
             thenHaveAFinalDirection(1, 5, "W");
     }
 
+    @Test
+    public void shouldNotExplorePlanetGroundProbeNotExistsOnPosition() {
+        bdd.
+            givenBody("[\"L\"]").
+            whenExplorePlanet(1, 3). // E
+            thenNotFoundWith("Ground probe not found at position (1, 3)");
+    }
+
 }

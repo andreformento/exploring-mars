@@ -86,6 +86,18 @@ class MarsSpacialStationControllerBDD {
             return this;
         }
 
+        void thenNotFoundWith(String message) {
+            then.
+                statusCode(is(HttpStatus.NOT_FOUND.value())).
+                body("message", equalTo(message));
+        }
+
+        void thenBadRequestWith(String message) {
+            then.
+                statusCode(is(HttpStatus.BAD_REQUEST.value())).
+                body("message", equalTo(message));
+        }
+
         void thenHaveAFinalDirection(Integer x, Integer y, String navigationSense) {
             then.
                 body("x", equalTo(x)).
@@ -109,12 +121,6 @@ class MarsSpacialStationControllerBDD {
         Then thenHasSize(Integer size) {
             then.body("size()", is(size));
             return this;
-        }
-
-        void thenBadRequestWith(String message) {
-            then.
-                statusCode(is(HttpStatus.BAD_REQUEST.value())).
-                body("message", equalTo(message));
         }
     }
 
