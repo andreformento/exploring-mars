@@ -6,14 +6,10 @@ import java.util.function.Consumer;
 
 public enum DriveCommand {
     @JsonProperty("M")
-    MOVE(groundProbe -> {
-        groundProbe.goForward();
-    }),
+    MOVE(GroundProbe::goForward),
 
     @JsonProperty("L")
-    TURN_LEFT(groundProbe -> {
-        groundProbe.turnLeft();
-    }),
+    TURN_LEFT(GroundProbe::turnLeft),
 
     @JsonProperty("R")
     TURN_RIGHT(GroundProbe::turnRight);
