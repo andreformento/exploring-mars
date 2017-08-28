@@ -5,7 +5,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
-import org.assertj.core.api.AssertionsForInterfaceTypes;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,10 +28,10 @@ public class WindRoseIT {
 
     @Test
     public void shouldDeserialize() throws IOException {
-        AssertionsForInterfaceTypes.assertThat(objectMapper.readValue("\"N\"", WindRose.class)).isEqualTo(WindRose.NORTH);
-        AssertionsForInterfaceTypes.assertThat(objectMapper.readValue("\"E\"", WindRose.class)).isEqualTo(WindRose.EAST);
-        AssertionsForInterfaceTypes.assertThat(objectMapper.readValue("\"S\"", WindRose.class)).isEqualTo(WindRose.SOUTH);
-        AssertionsForInterfaceTypes.assertThat(objectMapper.readValue("\"W\"", WindRose.class)).isEqualTo(WindRose.WEST);
+        assertThat(objectMapper.readValue("\"N\"", WindRose.class)).isEqualTo(WindRose.NORTH);
+        assertThat(objectMapper.readValue("\"E\"", WindRose.class)).isEqualTo(WindRose.EAST);
+        assertThat(objectMapper.readValue("\"S\"", WindRose.class)).isEqualTo(WindRose.SOUTH);
+        assertThat(objectMapper.readValue("\"W\"", WindRose.class)).isEqualTo(WindRose.WEST);
     }
 
 }
