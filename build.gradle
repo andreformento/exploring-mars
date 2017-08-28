@@ -20,7 +20,7 @@ apply plugin: 'docker'
 
 jar {
     baseName = 'exploring-mars'
-    version = '1.0.0-SNAPSHOT' //${project.version}
+    version = '1.0.0' //${project.version}
 }
 
 task buildDocker(type: Docker, dependsOn: build) {
