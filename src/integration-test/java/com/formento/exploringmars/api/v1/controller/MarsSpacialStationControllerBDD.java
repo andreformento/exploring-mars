@@ -2,6 +2,7 @@ package com.formento.exploringmars.api.v1.controller;
 
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
+import com.google.common.annotations.VisibleForTesting;
 import io.restassured.http.ContentType;
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
 import io.restassured.module.mockmvc.response.ValidatableMockMvcResponse;
@@ -22,14 +23,17 @@ class MarsSpacialStationControllerBDD {
         this.given = RestAssuredMockMvc.given().mockMvc(mvc).contentType(MediaType.APPLICATION_JSON_VALUE).accept(ContentType.JSON);
     }
 
+    @VisibleForTesting
     When given() {
         return new When(given.when());
     }
 
+    @VisibleForTesting
     When givenBody(String json) {
         return new When(given.body(json).when());
     }
 
+    @VisibleForTesting
     When givenSimpleBody() {
         return givenBody("{\n"
             + "    \"x\": 1,\n"
@@ -43,22 +47,27 @@ class MarsSpacialStationControllerBDD {
 
         private final MockMvcRequestAsyncSender when;
 
+        @VisibleForTesting
         When(MockMvcRequestAsyncSender when) {
             this.when = when;
         }
 
+        @VisibleForTesting
         ValidatableMockMvcResponse whenDoGet() {
             return when.get(PATH).then();
         }
 
+        @VisibleForTesting
         ValidatableMockMvcResponse whenDeployGroundProbeOnPlanet() {
             return when.post(PATH).then();
         }
 
+        @VisibleForTesting
         ValidatableMockMvcResponse whenExplorePlanet() {
             return when.post(PATH + "/explore-planet").then();
         }
 
+        @VisibleForTesting
         ValidatableMockMvcResponse whenExplorePlanet(Integer x, Integer y) {
             return when.put(PATH + "/explore-planet/" + x + "/" + y).then();
         }
