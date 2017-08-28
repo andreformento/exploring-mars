@@ -25,7 +25,7 @@ POST /spacial-station
 ```
 Exemplo
 ```
-curl -X POST 'http://localhost:8080/spacial-station' \
+curl -X POST 'https://exploringmars.herokuapp.com/spacial-station' \
 -H 'Content-Type: application/json' \
 -d '
 {
@@ -44,7 +44,7 @@ GET /spacial-station
 ```
 Exemplo
 ```
-curl -X GET 'http://localhost:8080/spacial-station'
+curl -X GET 'https://exploringmars.herokuapp.com/spacial-station'
 ```
 
 ## Controlar sonda
@@ -54,7 +54,7 @@ PUT /explore-planet/explore-planet/{x}/{y}
 ```
 Exemplo
 ```
-curl -X PUT 'http://localhost:8080/spacial-station/explore-planet/1/2' \
+curl -X PUT 'https://exploringmars.herokuapp.com/spacial-station/explore-planet/1/2' \
 -H 'Content-Type: application/json' \
 -d '["M","L","L","M","R"]'
 ```
@@ -66,7 +66,7 @@ POST /spacial-station/explore-planet
 ```
 Exemplo
 ```
-curl -X POST 'http://localhost:8080/spacial-station/explore-planet' \
+curl -X POST 'https://exploringmars.herokuapp.com/spacial-station/explore-planet' \
 -H 'Content-Type: application/json' \
 -d '
 {
