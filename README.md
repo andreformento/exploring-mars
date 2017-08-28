@@ -18,7 +18,8 @@ Existe uma *estação espacial* que fica próximo de Marte para gerenciar a movi
 
 ## TODO
 - completar readme
-- como rodar
+- documentação das apis
+- codacy A
 
 ## Como rodar a aplicação
 

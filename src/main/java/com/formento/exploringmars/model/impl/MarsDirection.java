@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.formento.exploringmars.model.Direction;
 import com.formento.exploringmars.model.NavigationSense;
 import com.formento.exploringmars.model.Position;
-import java.beans.ConstructorProperties;
 
 public class MarsDirection implements Direction {
 

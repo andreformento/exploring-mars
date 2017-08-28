@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import com.formento.exploringmars.model.impl.DriveCommandDefault;
 import com.formento.exploringmars.model.impl.MarsDirection;
-import java.beans.ConstructorProperties;
 import java.io.Serializable;
 import java.util.List;
 
