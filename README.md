@@ -78,12 +78,6 @@ curl -X POST 'https://exploringmars.herokuapp.com/spacial-station/explore-planet
 '
 ```
 
-## TODO
-- completar readme
-- documentação das apis
-- codacy A
-- colocar no heroku
-
 ## Como rodar a aplicação
 
 ### Requisitos
@@ -96,8 +90,16 @@ curl -X POST 'https://exploringmars.herokuapp.com/spacial-station/explore-planet
 gradle bootRun
 ```
 
-### Rodar com docker
+### Rodar com docker (local)
 ```
 gradle buildDocker
+docker run -d -p 8080:8080 andreformento/exploring-mars
+```
+
+### Rodar com docker (remoto)
+Neste caso, não é necessário fazer nenhum build local e é necessário apenas o Docker instalado *(não precisa nem de Java)*.
+
+Você pode irá usar a imagem pronta do [dockerhub](https://hub.docker.com/r/andreformento/exploring-mars):
+```
 docker run -d -p 8080:8080 andreformento/exploring-mars
 ```
