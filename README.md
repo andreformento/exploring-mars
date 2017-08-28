@@ -1,14 +1,12 @@
 [![Build Status](https://travis-ci.org/andreformento/exploring-mars.svg?branch=master)](https://travis-ci.org/andreformento/exploring-mars) [![codecov](https://codecov.io/gh/andreformento/exploring-mars/branch/master/graph/badge.svg)](https://codecov.io/gh/andreformento/exploring-mars) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/b205e4b7bc0f440db0b53dbddd563dba)](https://www.codacy.com/app/andreformento/exploring-mars?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=andreformento/exploring-mars&amp;utm_campaign=Badge_Grade)
 
-# exploring-mars
+# Explorando Marte
 
-## Explorando Marte
-
-### Objetivo
+## Objetivo
 
 É necessário desenvolver um sistema que consiga gerenciar sondas para explorar Marte.
 
-### Como funciona?
+## Como funciona?
 
 O contexto da aplicação se dá no momento em que sondas enviadas da Terra chegam em Marte.
 
@@ -20,3 +18,17 @@ Existe uma *estação espacial* que fica próximo de Marte para gerenciar a movi
 
 ## TODO
 - completar readme
+- como rodar
+
+## Como rodar a aplicação
+
+### Requisitos
+- Java 8
+- Gradle
+- Docker (opcional)
+
+
+### Rodar local
+```
+gradle bootRun
+```
