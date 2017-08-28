@@ -1,9 +1,5 @@
 package com.formento.exploringmars.model.impl;
 
-import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
 import com.formento.exploringmars.infra.BusinessException;
 import com.formento.exploringmars.model.Position;
 import org.junit.Before;
@@ -13,6 +9,10 @@ import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+
+import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class RectangularPlanetAreaTest {
@@ -50,8 +50,11 @@ public class RectangularPlanetAreaTest {
         when(position.isGreaterThanOrEqualTo(leftBottom)).thenReturn(false);
         when(position.isLessThanOrEqualTo(rightTop)).thenReturn(true);
 
+        when(position.toString()).thenReturn("(1, 2)");
+        when(leftBottom.toString()).thenReturn("(3, 4)");
+
         expectedException.expect(BusinessException.class);
-        expectedException.expectMessage("The point is less than left bottom");
+        expectedException.expectMessage("The position (1, 2) is outside of the area that begin at (3, 4)");
 
         planetArea.validateBoundary(position);
     }
@@ -61,8 +64,11 @@ public class RectangularPlanetAreaTest {
         when(position.isGreaterThanOrEqualTo(leftBottom)).thenReturn(true);
         when(position.isLessThanOrEqualTo(rightTop)).thenReturn(false);
 
+        when(position.toString()).thenReturn("(100, 200)");
+        when(rightTop.toString()).thenReturn("(7, 8)");
+
         expectedException.expect(BusinessException.class);
-        expectedException.expectMessage("The point is greater than right top");
+        expectedException.expectMessage("The position (100, 200) is outside of the area that end at (7, 8)");
 
         planetArea.validateBoundary(position);
     }

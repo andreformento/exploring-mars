@@ -1,10 +1,5 @@
 package com.formento.exploringmars.api.v1.controller;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.hasItem;
-import static org.hamcrest.Matchers.is;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
-
 import io.restassured.http.ContentType;
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
 import io.restassured.module.mockmvc.specification.MockMvcRequestSpecification;
@@ -20,6 +15,9 @@ import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
+
+import static org.hamcrest.Matchers.*;
+import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -195,6 +193,36 @@ public class MarsSpacialStationControllerIT {
             then().
             statusCode(is(HttpStatus.NOT_FOUND.value())).
             body("message", equalTo("Ground probe not found at position (1, 3)"));
+    }
+
+    @Test
+    public void shouldNotDeployOutsideOfSecurityAreaBeforeLeftBottom() {
+        given.
+                body("{\n"
+                        + "    \"x\": -1,\n"
+                        + "    \"y\": 0,\n"
+                        + "    \"navigationSense\": \"S\"\n"
+                        + "}").
+                post(PATH).
+                then().
+                assertThat().
+                statusCode(is(HttpStatus.BAD_REQUEST.value())).
+                body("message", equalTo("The position (-1, 0) is outside of the area that begin at (0, 0)"));
+    }
+
+    @Test
+    public void shouldNotDeployOutsideOfSecurityAreaBeforeRightTop() {
+        given.
+                body("{\n"
+                        + "    \"x\": 200,\n"
+                        + "    \"y\": 300,\n"
+                        + "    \"navigationSense\": \"S\"\n"
+                        + "}").
+                post(PATH).
+                then().
+                assertThat().
+                statusCode(is(HttpStatus.BAD_REQUEST.value())).
+                body("message", equalTo("The position (200, 300) is outside of the area that end at (5, 5)"));
     }
 
 }
