@@ -16,10 +16,14 @@ Há uma limitação em que as sondas podem se mover dentro do planeta que é det
 
 Existe uma *estação espacial* que fica próximo de Marte para gerenciar a movimentação das sondas e garantir que elas se movimentem de forma adequada. Desta forma, os sinais enviados da Terra chegam até esta estação espacial e de lá que são enviados os *comandos* para as sondas.
 
+## Documentação da API
+A documentação da API foi feita com Swagger e encontra-se em `http://localhost:8080/swagger-ui.html` (local)
+
 ## TODO
 - completar readme
 - documentação das apis
 - codacy A
+- colocar no heroku
 
 ## Como rodar a aplicação
 
