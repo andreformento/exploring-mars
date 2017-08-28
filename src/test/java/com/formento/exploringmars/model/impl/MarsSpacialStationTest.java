@@ -10,6 +10,7 @@ import com.formento.exploringmars.model.GroundProbe;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -17,6 +18,9 @@ public class MarsSpacialStationTest {
 
     @InjectMocks
     private MarsSpacialStation marsSpacialStation;
+
+    @Mock
+    private MarsPlanet marsPlanet;
 
     @Test
     public void shouldDeployGroundProbeOnMars() {
