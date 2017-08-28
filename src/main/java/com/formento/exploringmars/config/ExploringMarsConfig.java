@@ -1,6 +1,6 @@
 package com.formento.exploringmars.config;
 
-import com.formento.exploringmars.component.impl.ExploringMarsBuilder;
+import com.formento.exploringmars.component.ExploringMarsBuilder;
 import com.formento.exploringmars.config.MarsPlanetAreaConfig.Limit;
 import com.formento.exploringmars.model.SpacialStation;
 import org.springframework.beans.factory.annotation.Autowired;

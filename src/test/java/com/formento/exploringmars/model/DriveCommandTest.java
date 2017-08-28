@@ -1,35 +1,34 @@
-package com.formento.exploringmars.model.impl;
+package com.formento.exploringmars.model;
 
-import static org.mockito.Mockito.only;
-import static org.mockito.Mockito.verify;
-
-import com.formento.exploringmars.model.GroundProbe;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import static org.mockito.Mockito.only;
+import static org.mockito.Mockito.verify;
+
 @RunWith(MockitoJUnitRunner.class)
-public class DriveCommandDefaultTest {
+public class DriveCommandTest {
 
     @Mock
     private GroundProbe groundProbe;
 
     @Test
     public void shouldGoForward() {
-        DriveCommandDefault.MOVE.move(groundProbe);
+        DriveCommand.MOVE.move(groundProbe);
         verify(groundProbe, only()).goForward();
     }
 
     @Test
     public void shouldTurnLeft() {
-        DriveCommandDefault.TURN_LEFT.move(groundProbe);
+        DriveCommand.TURN_LEFT.move(groundProbe);
         verify(groundProbe, only()).turnLeft();
     }
 
     @Test
     public void shouldTurnRight() {
-        DriveCommandDefault.TURN_RIGHT.move(groundProbe);
+        DriveCommand.TURN_RIGHT.move(groundProbe);
         verify(groundProbe, only()).turnRight();
     }
 

@@ -1,22 +1,21 @@
-package com.formento.exploringmars.service.impl;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.only;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+package com.formento.exploringmars.service;
 
 import com.formento.exploringmars.model.Direction;
 import com.formento.exploringmars.model.DriveCommand;
 import com.formento.exploringmars.model.GroundProbe;
 import com.formento.exploringmars.model.SpacialStation;
-import com.google.common.collect.ImmutableList;
-import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+
+import java.util.List;
+import java.util.function.Consumer;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class MarsSpacialStationServiceTest {
@@ -29,8 +28,7 @@ public class MarsSpacialStationServiceTest {
     @Test
     public void shouldExploreMarsPlanet() {
         final Direction initialDirection = mock(Direction.class);
-        final DriveCommand driveCommand = mock(DriveCommand.class);
-        final List<DriveCommand> driveCommands = ImmutableList.<DriveCommand>builder().add(driveCommand).build();
+        final List<DriveCommand> driveCommands = mock(List.class);
         final GroundProbe groundProbe = mock(GroundProbe.class);
         final Direction finalDirection = mock(Direction.class);
 
@@ -39,7 +37,7 @@ public class MarsSpacialStationServiceTest {
         final Direction result = marsSpacialStationService.explorePlanet(initialDirection, driveCommands);
 
         assertThat(result).isEqualTo(finalDirection);
-        verify(driveCommand, only()).move(groundProbe);
+        verify(driveCommands, only()).forEach(any(Consumer.class));
     }
 
 }

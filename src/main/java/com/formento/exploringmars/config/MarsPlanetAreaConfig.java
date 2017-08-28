@@ -1,8 +1,9 @@
 package com.formento.exploringmars.config;
 
-import java.io.Serializable;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
+
+import java.io.Serializable;
 
 @Component
 @ConfigurationProperties(prefix = "planetArea")

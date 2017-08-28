@@ -1,8 +1,6 @@
 package com.formento.exploringmars.config;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import com.formento.exploringmars.component.impl.ExploringMarsBuilder;
+import com.formento.exploringmars.component.ExploringMarsBuilder;
 import com.formento.exploringmars.config.MarsPlanetAreaConfig.Limit;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,6 +9,8 @@ import org.mockito.Answers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ExploringMarsConfigTest {

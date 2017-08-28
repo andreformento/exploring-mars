@@ -1,7 +1,6 @@
-package com.formento.exploringmars.model.impl;
+package com.formento.exploringmars.model;
 
 import com.formento.exploringmars.infra.BusinessException;
-import com.formento.exploringmars.model.Position;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -15,12 +14,12 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class RectangularPlanetAreaTest {
+public class PlanetAreaTest {
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
 
-    private RectangularPlanetArea planetArea;
+    private PlanetArea planetArea;
     @Mock
     private Position leftBottom;
     @Mock
@@ -30,7 +29,7 @@ public class RectangularPlanetAreaTest {
 
     @Before
     public void init() {
-        this.planetArea = new RectangularPlanetArea(leftBottom, rightTop);
+        this.planetArea = new PlanetArea(leftBottom, rightTop);
     }
 
     @Test
