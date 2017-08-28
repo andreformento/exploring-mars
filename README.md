@@ -17,7 +17,66 @@ Há uma limitação em que as sondas podem se mover dentro do planeta que é det
 Existe uma *estação espacial* que fica próximo de Marte para gerenciar a movimentação das sondas e garantir que elas se movimentem de forma adequada. Desta forma, os sinais enviados da Terra chegam até esta estação espacial e de lá que são enviados os *comandos* para as sondas.
 
 ## Documentação da API
-A documentação da API foi feita com Swagger e encontra-se em `http://localhost:8080/swagger-ui.html` (local)
+
+## Implantar sonda
+Enviar uma sonda para Marte informando em que localização ela vai ser implantanda.
+```
+POST /spacial-station
+```
+Exemplo
+```
+curl -X POST 'http://localhost:8080/spacial-station' \
+-H 'Content-Type: application/json' \
+-d '
+{
+    "x": 1,
+    "y": 2,
+    "navigationSense": "N",
+    "driveCommands": ["L","M","L","M","L","M","L","M","M"]
+}
+'
+```
+
+## Listas sondas implantadas
+Listar todas as sondas já implantadas em Marte.
+```
+GET /spacial-station
+```
+Exemplo
+```
+curl -X GET 'http://localhost:8080/spacial-station'
+```
+
+## Controlar sonda
+Enviar comandos para que a sonda se movimente.
+```
+PUT /explore-planet/explore-planet/{x}/{y}
+```
+Exemplo
+```
+curl -X PUT 'http://localhost:8080/spacial-station/explore-planet/1/2' \
+-H 'Content-Type: application/json' \
+-d '["M","L","L","M","R"]'
+```
+
+## Jornada
+Implantar uma nova sonda com comandos para que ela faça uma jornada por Marte.
+```
+POST /spacial-station/explore-planet
+```
+Exemplo
+```
+curl -X POST 'http://localhost:8080/spacial-station/explore-planet' \
+-H 'Content-Type: application/json' \
+-d '
+{
+    "x": 3,
+    "y": 3,
+    "navigationSense": "E",
+    "driveCommands": ["M","M","R","M","M","R","M","R","R","M"]
+}
+'
+```
 
 ## TODO
 - completar readme
