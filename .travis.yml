@@ -2,15 +2,10 @@ language: java
 jdk:
   - oraclejdk8
 
-before_script:
-  - pip install --user codecov
+sudo: false # faster builds
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
-
-test:
-  post:
-  - if [ -e ./gradlew ]; then ./gradlew jacocoTestReport;else gradle jacocoTestReport;fi
 
 notifications:
   email: false
