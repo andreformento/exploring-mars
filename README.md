@@ -25,10 +25,15 @@ Existe uma *estação espacial* que fica próximo de Marte para gerenciar a movi
 ### Requisitos
 - Java 8
 - Gradle
-- Docker (opcional)
-
+- Docker *(opcional)*
 
 ### Rodar local
 ```
 gradle bootRun
+```
+
+### Rodar com docker
+```
+gradle buildDocker
+docker run -d -p 8080:8080 andreformento/exploring-mars
 ```
