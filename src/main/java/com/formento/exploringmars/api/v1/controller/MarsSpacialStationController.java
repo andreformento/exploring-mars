@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/spacial-station")
+@RequestMapping("/spacials-stations/ground-probes")
 public class MarsSpacialStationController {
 
     private final MarsSpacialStationService marsSpacialStationService;
@@ -34,7 +34,7 @@ public class MarsSpacialStationController {
         return marsSpacialStationService.deployGroundProbeOnPlanet(direction);
     }
 
-    @PutMapping(value = "/explore-planet/{x}/{y}")
+    @PutMapping(value = "/{x}/{y}/explore-planet-by-position")
     @ResponseStatus(HttpStatus.OK)
     public Direction explorePlanet(
             @PathVariable("x") final Integer x,
@@ -44,7 +44,7 @@ public class MarsSpacialStationController {
         return marsSpacialStationService.explorePlanet(new Position(x, y), driveCommands);
     }
 
-    @PostMapping("/explore-planet")
+    @PostMapping("/explore-planet-by-jorney")
     @ResponseStatus(HttpStatus.OK)
     public Direction explorePlanet(@RequestBody final Journey journey) {
         return marsSpacialStationService.explorePlanet(journey.getDirection(), journey.getDriveCommands());

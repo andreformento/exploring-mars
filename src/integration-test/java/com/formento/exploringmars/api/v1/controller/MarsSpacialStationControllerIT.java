@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppC
 @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
 public class MarsSpacialStationControllerIT {
 
-    private static final String PATH = "/spacial-station";
+    private static final String PATH = "/spacials-stations/ground-probes";
 
     @Autowired
     private WebApplicationContext context;
@@ -46,7 +46,7 @@ public class MarsSpacialStationControllerIT {
                 + "    \"navigationSense\": \"N\",\n"
                 + "    \"driveCommands\": [\"M\",\"L\",\"R\",\"R\"]\n"
                 + "}").
-            post(PATH + "/explore-planet").
+            post(PATH + "/explore-planet-by-jorney").
             then().
             assertThat().
             statusCode(is(HttpStatus.OK.value())).
@@ -66,7 +66,7 @@ public class MarsSpacialStationControllerIT {
                 + "    \"navigationSense\": \"W\",\n"
                 + "    \"driveCommands\": [\"M\",\"R\"]\n"
                 + "}").
-            post(PATH + "/explore-planet").
+            post(PATH + "/explore-planet-by-jorney").
             then().
             assertThat().
             statusCode(is(HttpStatus.OK.value())).
@@ -84,7 +84,7 @@ public class MarsSpacialStationControllerIT {
                 + "    \"navigationSense\": \"N\",\n"
                 + "    \"driveCommands\": [\"L\",\"M\",\"L\",\"M\",\"L\",\"M\",\"L\",\"M\",\"M\"]\n"
                 + "}").
-            post(PATH + "/explore-planet").
+            post(PATH + "/explore-planet-by-jorney").
             then().
             assertThat().
             statusCode(is(HttpStatus.OK.value())).
@@ -99,7 +99,7 @@ public class MarsSpacialStationControllerIT {
                 + "    \"navigationSense\": \"E\",\n"
                 + "    \"driveCommands\": [\"M\",\"M\",\"R\",\"M\",\"M\",\"R\",\"M\",\"R\",\"R\",\"M\"]\n"
                 + "}").
-            post(PATH + "/explore-planet").
+            post(PATH + "/explore-planet-by-jorney").
             then().
             assertThat().
             statusCode(is(HttpStatus.OK.value())).
@@ -131,7 +131,7 @@ public class MarsSpacialStationControllerIT {
                 + "    \"navigationSense\": \"N\",\n"
                 + "    \"driveCommands\": [\"M\",\"L\",\"R\",\"R\"]\n"
                 + "}").
-            post(PATH + "/explore-planet").
+            post(PATH + "/explore-planet-by-jorney").
             then().
             assertThat().
             statusCode(is(HttpStatus.BAD_REQUEST.value())).
@@ -176,7 +176,7 @@ public class MarsSpacialStationControllerIT {
         shouldNavigateOnMars();
         given.
             body("[\"L\",\"M\",\"M\",\"L\"]").
-            put(PATH + "/explore-planet/" + 1 + "/" + 3). // E
+            put(PATH + "/1/3/explore-planet-by-position"). // E
             then().
             assertThat().
             statusCode(is(HttpStatus.OK.value())).
@@ -189,7 +189,7 @@ public class MarsSpacialStationControllerIT {
     public void shouldNotExplorePlanetGroundProbeNotExistsOnPosition() {
         given.
             body("[\"L\"]").
-            put(PATH + "/explore-planet/" + 1 + "/" + 3). // E
+            put(PATH + "/1/3/explore-planet-by-position"). // E
             then().
             statusCode(is(HttpStatus.NOT_FOUND.value())).
             body("message", equalTo("Ground probe not found at position (1, 3)"));

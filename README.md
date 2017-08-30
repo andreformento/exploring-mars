@@ -21,11 +21,11 @@ Existe uma *estação espacial* que fica próximo de Marte para gerenciar a movi
 ## Implantar sonda
 Enviar uma sonda para Marte informando em que localização ela vai ser implantanda.
 ```
-POST /spacial-station
+POST /spacials-stations/ground-probes
 ```
 Exemplo
 ```
-curl -X POST 'https://exploringmars.herokuapp.com/spacial-station' \
+curl -X POST 'https://exploringmars.herokuapp.com/spacials-stations/ground-probes' \
 -H 'Content-Type: application/json' \
 -d '
 {
@@ -40,21 +40,21 @@ curl -X POST 'https://exploringmars.herokuapp.com/spacial-station' \
 ## Listas sondas implantadas
 Listar todas as sondas já implantadas em Marte.
 ```
-GET /spacial-station
+GET /spacials-stations/ground-probes
 ```
 Exemplo
 ```
-curl -X GET 'https://exploringmars.herokuapp.com/spacial-station'
+curl -X GET 'https://exploringmars.herokuapp.com/spacials-stations/ground-probes'
 ```
 
 ## Controlar sonda
 Enviar comandos para que a sonda se movimente.
 ```
-PUT /explore-planet/explore-planet/{x}/{y}
+PUT /spacials-stations/ground-probes/{x}/{y}/explore-planet-by-position
 ```
 Exemplo
 ```
-curl -X PUT 'https://exploringmars.herokuapp.com/spacial-station/explore-planet/1/2' \
+curl -X PUT 'https://exploringmars.herokuapp.com/spacials-stations/ground-probes/1/2/explore-planet-by-position' \
 -H 'Content-Type: application/json' \
 -d '["M","L","L","M","R"]'
 ```
@@ -62,11 +62,11 @@ curl -X PUT 'https://exploringmars.herokuapp.com/spacial-station/explore-planet/
 ## Jornada
 Implantar uma nova sonda com comandos para que ela faça uma jornada por Marte.
 ```
-POST /spacial-station/explore-planet
+POST /spacials-stations/ground-probes/explore-planet-by-jorney
 ```
 Exemplo
 ```
-curl -X POST 'https://exploringmars.herokuapp.com/spacial-station/explore-planet' \
+curl -X POST 'https://exploringmars.herokuapp.com/spacial-station/explore-planet-by-jorney' \
 -H 'Content-Type: application/json' \
 -d '
 {
