@@ -37,7 +37,7 @@ curl -X POST 'https://exploringmars.herokuapp.com/spacials-stations/ground-probe
 '
 ```
 
-## Listas sondas implantadas
+## Listar sondas implantadas
 Listar todas as sondas já implantadas em Marte.
 ```
 GET /spacials-stations/ground-probes
@@ -45,6 +45,16 @@ GET /spacials-stations/ground-probes
 Exemplo
 ```
 curl -X GET 'https://exploringmars.herokuapp.com/spacials-stations/ground-probes'
+```
+
+## Recuperar sonda por ID
+
+```
+GET /spacials-stations/ground-probes/{id}
+```
+Exemplo
+```
+curl -X GET 'https://exploringmars.herokuapp.com/spacials-stations/ground-probes/some-uuid'
 ```
 
 ## Controlar sonda

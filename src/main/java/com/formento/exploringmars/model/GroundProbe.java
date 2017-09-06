@@ -1,8 +1,11 @@
 package com.formento.exploringmars.model;
 
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
+
 public class GroundProbe {
 
     private final Planet planet;
+    private String id;
     private Position position;
     private NavigationSense navigationSense;
 
@@ -16,6 +19,14 @@ public class GroundProbe {
         this.navigationSense = navigationSense;
 
         this.planet.landing(position, this);
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Position goForward() {
@@ -35,6 +46,7 @@ public class GroundProbe {
         return this.navigationSense;
     }
 
+    @JsonUnwrapped
     public Direction getCurrentDirection() {
         return new Direction(position, navigationSense);
     }

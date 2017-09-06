@@ -3,6 +3,7 @@ package com.formento.exploringmars.api.v1.controller;
 import com.formento.exploringmars.api.v1.mapper.Journey;
 import com.formento.exploringmars.model.Direction;
 import com.formento.exploringmars.model.DriveCommand;
+import com.formento.exploringmars.model.GroundProbe;
 import com.formento.exploringmars.model.Position;
 import com.formento.exploringmars.service.MarsSpacialStationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +31,9 @@ public class MarsSpacialStationController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Direction deployGroundProbeOnPlanet(@RequestBody final Direction direction) {
-        return marsSpacialStationService.deployGroundProbeOnPlanet(direction);
+    public GroundProbe deployGroundProbeOnPlanet(@RequestBody final Direction direction) {
+        final GroundProbe groundProbe = marsSpacialStationService.deployGroundProbeOnPlanet(direction);
+        return groundProbe;
     }
 
     @PutMapping(value = "/{x}/{y}/explore-planet-by-position")
@@ -42,6 +44,12 @@ public class MarsSpacialStationController {
             @RequestBody final List<DriveCommand> driveCommands
     ) {
         return marsSpacialStationService.explorePlanet(new Position(x, y), driveCommands);
+    }
+
+    @GetMapping(value = "/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public GroundProbe getById(@PathVariable("id") final String id) {
+        return marsSpacialStationService.getById(id);
     }
 
     @PostMapping("/explore-planet-by-jorney")
