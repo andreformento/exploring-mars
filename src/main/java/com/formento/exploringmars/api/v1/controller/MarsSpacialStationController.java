@@ -32,8 +32,7 @@ public class MarsSpacialStationController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public GroundProbe deployGroundProbeOnPlanet(@RequestBody final Direction direction) {
-        final GroundProbe groundProbe = marsSpacialStationService.deployGroundProbeOnPlanet(direction);
-        return groundProbe;
+        return marsSpacialStationService.deployGroundProbeOnPlanet(direction);
     }
 
     @PutMapping(value = "/{x}/{y}/explore-planet-by-position")
